@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101827">
+    <title>Garage Management System | Dashboard</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">G</div>
+            <div>
+                <h2>GARAGE<span>.</span></h2>
+                <small>MANAGEMENT SYSTEM</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-link active">
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </a>
+
+            <a href="#customers" class="nav-link">
+                <span class="nav-icon">♙</span>
+                Customers
+            </a>
+
+            <a href="#vehicles" class="nav-link">
+                <span class="nav-icon">▰</span>
+                Vehicles
+            </a>
+
+            <a href="#services" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                Service Jobs
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>System Online</strong>
+                    <small>Local database connected</small>
+                </div>
+            </div>
+            <p>Garage Management System</p>
+            <small>Version 2.0</small>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">WORKSPACE / DASHBOARD</p>
+                <h1>Workshop Dashboard</h1>
+                <p class="header-subtitle">
+                    Welcome back. Here's what's happening in your garage.
+                </p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="date-display">
+                    <span class="date-icon">◷</span>
+                    <span id="currentDate">Workshop Overview</span>
+                </div>
+                <div class="profile">
+                    <div class="profile-avatar">GM</div>
+                    <div>
+                        <strong>Garage Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Total Customers</span>
+                        <div class="stat-icon yellow">♙</div>
+                    </div>
+                    <strong id="customerCount">0</strong>
+                    <p>Registered customers</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Total Vehicles</span>
+                        <div class="stat-icon blue">▰</div>
+                    </div>
+                    <strong id="vehicleCount">0</strong>
+                    <p>Registered vehicles</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Service Jobs</span>
+                        <div class="stat-icon purple">⚙</div>
+                    </div>
+                    <strong id="jobCount">0</strong>
+                    <p>Total service records</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Open Jobs</span>
+                        <div class="stat-icon orange">◷</div>
+                    </div>
+                    <strong id="pendingCount">0</strong>
+                    <p>Jobs awaiting completion</p>
+                </article>
+
+            </section>
+
+            <!-- NOTIFICATION -->
+            <p id="notice" class="notice" role="status" aria-live="polite"></p>
+
+            <!-- SECTION HEADING -->
+            <div class="section-heading">
+                <div>
+                    <span class="section-overline">WORKSHOP OPERATIONS</span>
+                    <h2>Management Center</h2>
+                    <p>Register customers, manage vehicles and create repair jobs.</p>
+                </div>
+            </div>
+
+            <!-- REGISTRATION FORMS -->
+            <section class="forms-grid">
+
+                <!-- CUSTOMER FORM -->
+                <form id="customerForm" class="panel" autocomplete="on">
+                    <div class="panel-heading">
+                        <div class="form-icon yellow">♙</div>
+                        <div>
+                            <h3>Add New Customer</h3>
+                            <p>Enter customer information below.</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Full Name
+                        <input
+                            name="full_name"
+                            type="text"
+                            required
+                            maxlength="120"
+                            placeholder="Enter customer's full name">
+                    </label>
+
+                    <label>
+                        Phone Number
+                        <input
+                            name="phone"
+                            type="tel"
+                            required
+                            maxlength="30"
+                            placeholder="+250 7XX XXX XXX">
+                    </label>
+
+                    <label>
+                        Email Address <span class="optional">(Optional)</span>
+                        <input
+                            name="email"
+                            type="email"
+                            maxlength="120"
+                            placeholder="customer@example.com">
+                    </label>
+
+                    <button type="submit" class="primary-button">
+                        <span>+</span> Save Customer
+                    </button>
+                </form>
+
+                <!-- VEHICLE FORM -->
+                <form id="vehicleForm" class="panel" autocomplete="on">
+                    <div class="panel-heading">
+                        <div class="form-icon blue">▰</div>
+                        <div>
+                            <h3>Register Vehicle</h3>
+                            <p>Add a vehicle to a customer account.</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Vehicle Owner
+                        <select name="customer_id" id="vehicleCustomer" required>
+                            <option value="">Add a customer first</option>
+                        </select>
+                    </label>
+
+                    <div class="form-row">
+                        <label>
+                            Vehicle Make
+                            <input name="make" required placeholder="Toyota">
+                        </label>
+
+                        <label>
+                            Vehicle Model
+                            <input name="model" required placeholder="Corolla">
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            Registration Number
+                            <input name="registration_number" required placeholder="RAA 123 A">
+                        </label>
+
+                        <label>
+                            Manufacturing Year
+                            <input
+                                name="year"
+                                type="number"
+                                min="1900"
+                                max="2100"
+                                placeholder="2020">
+                        </label>
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        <span>+</span> Register Vehicle
+                    </button>
+                </form>
+
+                <!-- SERVICE FORM -->
+                <form id="repairForm" class="panel service-form">
+                    <div class="panel-heading">
+                        <div class="form-icon purple">⚙</div>
+                        <div>
+                            <h3>Create Service Job</h3>
+                            <p>Record a new repair or maintenance job.</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Select Vehicle
+                        <select name="vehicle_id" id="repairVehicle" required>
+                            <option value="">Register a vehicle first</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Job Description
+                        <textarea
+                            name="description"
+                            rows="3"
+                            required
+                            placeholder="Describe the repair or maintenance work..."></textarea>
+                    </label>
+
+                    <div class="form-row">
+                        <label>
+                            Service Cost (RWF)
+                            <input
+                                name="cost"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="0"
+                                required>
+                        </label>
+
+                        <label>
+                            Job Status
+                            <select name="status">
+                                <option>Pending</option>
+                                <option>In Progress</option>
+                                <option>Completed</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        <span>+</span> Save Service Job
+                    </button>
+                </form>
+
+            </section>
+
+            <!-- SERVICE RECORDS -->
+            <section class="panel records" id="services">
+
+                <div class="records-header">
+                    <div>
+                        <span class="section-overline">WORKSHOP HISTORY</span>
+                        <h2>Service Records</h2>
+                        <p>Monitor and review the latest registered repair jobs.</p>
+                    </div>
+
+                    <button type="button" class="refresh-button" id="refreshButton">
+                        ↻ Refresh Records
+                    </button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vehicle</th>
+                                <th>Customer</th>
+                                <th>Description</th>
+                                <th>Cost (RWF)</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="repairTable">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    Loading service records...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span>Service records are loaded from your database.</span>
+                    <span>Live dashboard data</span>
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <p>
+                    © <span id="currentYear"></span>
+                    Garage Management System.
+                    All rights reserved.
+                </p>
+                <span>Built with PHP & MySQL</span>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<script>
+const api = 'api.php?action=';
+const notice = document.getElementById('notice');
+
+function showNotice(message, error = false) {
+    notice.textContent = message;
+    notice.className = 'notice ' + (error ? 'error' : 'success');
+}
+
+async function request(action, options = {}) {
+    const response = await fetch(api + action, options);
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Request failed.');
+    }
+
+    return result;
+}
+
+async function loadDashboard() {
+    try {
+        const [summary, customers, vehicles, repairs] = await Promise.all([
+            request('summary'),
+            request('customers'),
+            request('vehicles'),
+            request('repairs')
+        ]);
+
+        // UPDATE DASHBOARD STATISTICS
+        document.getElementById('customerCount').textContent =
+            summary.summary.customers;
+
+        document.getElementById('vehicleCount').textContent =
+            summary.summary.vehicles;
+
+        document.getElementById('jobCount').textContent =
+            summary.summary.jobs;
+
+        document.getElementById('pendingCount').textContent =
+            summary.summary.pending;
+
+        // LOAD CUSTOMER OPTIONS
+        const customerSelect = document.getElementById('vehicleCustomer');
+
+        customerSelect.innerHTML =
+            '<option value="">Choose a customer</option>';
+
+        customers.data.forEach(c => {
+            customerSelect.add(
+                new Option(c.full_name + ' — ' + c.phone, c.id)
+            );
+        });
+
+        // LOAD VEHICLE OPTIONS
+        const vehicleSelect = document.getElementById('repairVehicle');
+
+        vehicleSelect.innerHTML =
+            '<option value="">Choose a vehicle</option>';
+
+        vehicles.data.forEach(v => {
+            vehicleSelect.add(
+                new Option(
+                    v.registration_number + ' — ' + v.make + ' ' + v.model,
+                    v.id
+                )
+            );
+        });
+
+        // LOAD SERVICE RECORDS
+        const body = document.getElementById('repairTable');
+        body.innerHTML = '';
+
+        if (!repairs.data.length) {
+            body.innerHTML = `
+                <tr>
+                    <td colspan="6" class="empty-state">
+                        No service jobs yet. Add your first job above.
+                    </td>
+                </tr>
+            `;
+        }
+
+        repairs.data.forEach(job => {
+            const row = document.createElement('tr');
+
+            const values = [
+                job.registration_number + ' · ' + job.make + ' ' + job.model,
+                job.customer_name,
+                job.description,
+                Number(job.cost).toLocaleString(),
+                job.status,
+                job.created_at
+                    ? new Date(job.created_at.replace(' ', 'T')).toLocaleDateString()
+                    : '—'
+            ];
+
+            values.forEach((value, index) => {
+                const cell = document.createElement('td');
+
+                if (index === 4) {
+                    const tag = document.createElement('span');
+
+                    tag.className = 'tag ' +
+                        (job.status === 'Completed'
+                            ? 'complete'
+                            : job.status === 'In Progress'
+                                ? 'progress'
+                                : 'open');
+
+                    tag.textContent = value;
+                    cell.appendChild(tag);
+                } else {
+                    cell.textContent = value ?? '';
+                }
+
+                row.appendChild(cell);
+            });
+
+            body.appendChild(row);
+        });
+
+    } catch (error) {
+        showNotice(
+            error.message +
+            ' Confirm Apache/MySQL are running and database.sql is imported.',
+            true
+        );
+    }
+}
+
+// SUBMIT FORM DATA
+async function submitForm(form, action) {
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+        const result = await request(action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        form.reset();
+
+        showNotice(result.message);
+
+        await loadDashboard();
+
+    } catch (error) {
+        showNotice(error.message, true);
+    }
+}
+
+// FORM EVENT LISTENERS
+document.getElementById('customerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    submitForm(e.target, 'add_customer');
+});
+
+document.getElementById('vehicleForm').addEventListener('submit', e => {
+    e.preventDefault();
+    submitForm(e.target, 'add_vehicle');
+});
+
+document.getElementById('repairForm').addEventListener('submit', e => {
+    e.preventDefault();
+    submitForm(e.target, 'add_repair');
+});
+
+// REFRESH BUTTON
+document.getElementById('refreshButton').addEventListener('click', async () => {
+    const button = document.getElementById('refreshButton');
+
+    button.disabled = true;
+    button.textContent = '↻ Refreshing...';
+
+    await loadDashboard();
+
+    button.disabled = false;
+    button.textContent = '↻ Refresh Records';
+});
+
+// DATE AND YEAR
+document.getElementById('currentDate').textContent =
+    new Date().toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+
+document.getElementById('currentYear').textContent =
+    new Date().getFullYear();
+
+// INITIAL DASHBOARD LOAD
+loadDashboard();
+</script>
+
+</body>
+</html>

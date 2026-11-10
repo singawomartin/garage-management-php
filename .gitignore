@@ -1,0 +1,22 @@
+
+# Private configuration
+config.php
+.env
+.env.*
+
+# Logs
+*.log
+
+# Private database files and backups
+*.db
+*.sqlite
+*.bak
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE settings
+.vscode/
+.idea/
