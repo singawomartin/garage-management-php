@@ -15,7 +15,7 @@ A simple garage workshop dashboard built with PHP, MySQL, HTML, CSS and JavaScri
 3. Open `http://localhost/phpmyadmin`.
 4. Select **Import** and import `database/database.sql`.
 5. Open `api.php` and check the database settings at the top. Default: MySQL user `root`, blank password. Change only if your local MySQL account has a password.
-6. Visit `http://localhost/garage-management-php/`.
+6. Visit ``.
 
 Do not open `index.html` by double-clicking it from File Explorer. Use the localhost URL so its JavaScript can call PHP through Apache.
 
